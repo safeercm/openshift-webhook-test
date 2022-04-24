@@ -1,0 +1,29 @@
+version: 0.19.0
+name: os-pyhttptwo
+namespace: ""
+runtime: python
+registry: ""
+image: docker.io/safeercm/os-pyhttptwo:latest
+imageDigest: sha256:6b94d736b59bd01abccc9ceaca742d26ca71fe66f239ad2131ac38e84f92d4d2
+build: local
+git: {}
+builder: quay.io/boson/faas-python-builder:v0.9.2
+builders:
+  default: quay.io/boson/faas-python-builder:v0.9.2
+buildpacks: []
+volumes: []
+buildEnvs: []
+envs:
+- name: BOT_TOKEN
+  value: '{{ secret:serverless-telegram-bot:telegram-bot-token }}'
+- name: CHAT_ID
+  value: '{{ configMap:bot-config:self-chat-id }}'
+annotations: {}
+options: {}
+labels: []
+healthEndpoints:
+  liveness: /health/liveness
+  readiness: /health/readiness
+created: 2022-04-22T11:24:29.992124607Z
+invocation:
+  format: http
